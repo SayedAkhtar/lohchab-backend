@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "insurances",
+  "info": {
+    "singularName": "insurance",
+    "pluralName": "insurances",
+    "displayName": "Insurance",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "brands": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
+    },
+    "vehicle_type": {
+      "type": "string",
+      "required": true
+    },
+    "registration_number": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "phone_number": {
+      "type": "integer"
+    },
+    "documents": {
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_features_feature_availables",
+  "info": {
+    "displayName": "Feature Available"
+  },
+  "options": {},
+  "attributes": {
+    "feature": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::feature.feature"
+    }
+  }
+}

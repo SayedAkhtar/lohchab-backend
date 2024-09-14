@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_variants_car_variants",
+  "info": {
+    "displayName": "Car Variant",
+    "icon": "database",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "VariantName": {
+      "type": "string"
+    },
+    "EngineCapacity": {
+      "type": "string"
+    },
+    "Milage": {
+      "type": "string"
+    },
+    "transmission_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::transmission-type.transmission-type"
+    },
+    "price": {
+      "type": "float"
+    },
+    "fuel_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::fuel-type.fuel-type"
+    },
+    "features": {
+      "displayName": "Feature Available",
+      "type": "component",
+      "repeatable": true,
+      "component": "features.feature-available"
+    }
+  }
+}

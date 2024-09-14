@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "home_slider": {
+      "displayName": "Home Slider",
+      "type": "component",
+      "repeatable": true,
+      "component": "home-slider.home-slider"
+    },
+    "faq": {
+      "displayName": "Faq",
+      "type": "component",
+      "repeatable": true,
+      "component": "faq.faq"
+    },
+    "popular_brands": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::brand.brand"
+    },
+    "gallery": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

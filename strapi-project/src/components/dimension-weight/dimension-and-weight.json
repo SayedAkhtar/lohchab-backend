@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_dimension_weight_dimension_and_weights",
+  "info": {
+    "displayName": "Dimension and Weight",
+    "icon": "puzzle"
+  },
+  "options": {},
+  "attributes": {
+    "Bootspace": {
+      "type": "string"
+    },
+    "Doors": {
+      "type": "string"
+    },
+    "FuelCapacity": {
+      "type": "string"
+    },
+    "GroundClearance": {
+      "type": "string"
+    },
+    "Height": {
+      "type": "string"
+    },
+    "KerbWeight": {
+      "type": "string"
+    },
+    "Length": {
+      "type": "string"
+    },
+    "Number_Of_Seating_Rows": {
+      "type": "string"
+    },
+    "SeatingCapacity": {
+      "type": "string"
+    },
+    "Wheelbase": {
+      "type": "string"
+    },
+    "Width": {
+      "type": "string"
+    },
+    "show": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    }
+  }
+}
