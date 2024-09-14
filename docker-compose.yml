@@ -10,7 +10,7 @@ services:
         else
           cd /data &&
           git fetch --all &&
-          git reset --hard origin/your-branch-name
+          git reset --hard origin/main
         fi &&
         npm install &&
         npm run develop
