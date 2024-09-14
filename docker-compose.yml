@@ -6,6 +6,7 @@ services:
       sh -c "
         apk add --no-cache git &&
         if [ ! -d /data/.git ]; then
+          rm -rm ./data
           git clone https://github.com/SayedAkhtar/lohchab-backend /data
         else
           cd /data &&
