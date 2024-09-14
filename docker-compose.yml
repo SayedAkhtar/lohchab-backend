@@ -26,7 +26,7 @@ services:
       DATABASE_PASSWORD: strapi
       DATABASE_SSL: 'false'
     volumes:
-      - ./strapi-project:/data
+      - ./strapi-project/strapi-project:/data
     working_dir: /data
     ports:
       - '1337:1337'
