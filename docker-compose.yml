@@ -2,7 +2,8 @@ version: '3'
 services:
   strapi:
     image: node:20-alpine
-    command: npm run develop
+    command: >
+      sh -c "npm install && npm run develop"
     labels:
       '0': 'Backend Client For Handling Data'
     environment:
