@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "suspensions",
+  "info": {
+    "singularName": "suspension",
+    "pluralName": "suspensions",
+    "displayName": "Suspension"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

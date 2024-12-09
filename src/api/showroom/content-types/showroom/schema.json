@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "showrooms",
+  "info": {
+    "singularName": "showroom",
+    "pluralName": "showrooms",
+    "displayName": "Showrooms",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "map_link": {
+      "type": "text"
+    },
+    "open_time": {
+      "type": "time"
+    },
+    "close_time": {
+      "type": "time"
+    }
+  }
+}

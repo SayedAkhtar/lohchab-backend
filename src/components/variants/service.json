@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_variants_services",
+  "info": {
+    "displayName": "service",
+    "icon": "key"
+  },
+  "options": {},
+  "attributes": {
+    "term_name": {
+      "type": "string"
+    },
+    "period": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cooling_types",
+  "info": {
+    "singularName": "cooling-type",
+    "pluralName": "cooling-types",
+    "displayName": "Cooling Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

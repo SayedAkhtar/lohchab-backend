@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "brake_types",
+  "info": {
+    "singularName": "brake-type",
+    "pluralName": "brake-types",
+    "displayName": "Brake Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

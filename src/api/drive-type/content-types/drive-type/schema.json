@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "drive_types",
+  "info": {
+    "singularName": "drive-type",
+    "pluralName": "drive-types",
+    "displayName": "Drive Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_variants_car_interiors",
+  "info": {
+    "displayName": "Car Interior"
+  },
+  "options": {},
+  "attributes": {
+    "interiors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::interior.interior"
+    }
+  }
+}

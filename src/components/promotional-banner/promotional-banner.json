@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_promotional_banner_promotions",
+  "info": {
+    "displayName": "Promotional Banner",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "promotional_media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

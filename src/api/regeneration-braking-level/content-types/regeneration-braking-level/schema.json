@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "regeneration_braking_levels",
+  "info": {
+    "singularName": "regeneration-braking-level",
+    "pluralName": "regeneration-braking-levels",
+    "displayName": "Regeneration Braking Level"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

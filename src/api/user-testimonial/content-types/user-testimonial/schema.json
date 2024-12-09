@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_testimonials",
+  "info": {
+    "singularName": "user-testimonial",
+    "pluralName": "user-testimonials",
+    "displayName": "User Testimonial"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "testimonial": {
+      "type": "text",
+      "required": true,
+      "minLength": 128
+    },
+    "admin_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}

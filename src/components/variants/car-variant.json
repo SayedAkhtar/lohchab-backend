@@ -1,0 +1,250 @@
+{
+  "collectionName": "components_variants_car_variants",
+  "info": {
+    "displayName": "Car Variant",
+    "icon": "database",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "VariantName": {
+      "type": "string"
+    },
+    "price": {
+      "type": "float"
+    },
+    "features": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::feature.feature"
+    },
+    "arai_mileage": {
+      "type": "string"
+    },
+    "body_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::body-type.body-type"
+    },
+    "engine_displacement": {
+      "type": "string"
+    },
+    "no_of_cylinders": {
+      "type": "string"
+    },
+    "maximum_power": {
+      "type": "string"
+    },
+    "maximum_torque": {
+      "type": "string"
+    },
+    "fuel_tank_capacity": {
+      "type": "string"
+    },
+    "ground_clearance": {
+      "type": "string"
+    },
+    "engine_type": {
+      "type": "string"
+    },
+    "gearbox": {
+      "type": "string"
+    },
+    "drive_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::drive-type.drive-type"
+    },
+    "alloy_wheel_size": {
+      "type": "string"
+    },
+    "front_suspension": {
+      "type": "string"
+    },
+    "rear_suspension": {
+      "type": "string"
+    },
+    "front_brake_type": {
+      "type": "string"
+    },
+    "rear_brake_type": {
+      "type": "string"
+    },
+    "variant_color": {
+      "type": "component",
+      "repeatable": true,
+      "component": "variants.variant-color"
+    },
+    "continue_base_colors": {
+      "type": "boolean",
+      "default": true,
+      "required": false
+    },
+    "exteriors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exterior.exterior"
+    },
+    "interiors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::interior.interior"
+    },
+    "safeties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::safety.safety"
+    },
+    "transmission_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::transmission-type.transmission-type"
+    },
+    "battery_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::battery-type.battery-type"
+    },
+    "brake_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brake-type.brake-type"
+    },
+    "charging_option": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::charging-option.charging-option"
+    },
+    "charging_port": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::charging-port.charging-port"
+    },
+    "charging_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::charging-type.charging-type"
+    },
+    "chassis_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::chassis-type.chassis-type"
+    },
+    "cooling_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cooling-type.cooling-type"
+    },
+    "emission_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::emission-type.emission-type"
+    },
+    "gear_box": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gear-box.gear-box"
+    },
+    "motor_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::motor-type.motor-type"
+    },
+    "wheel_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::wheel-type.wheel-type"
+    },
+    "tyre_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tyre-type.tyre-type"
+    },
+    "suspension": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::suspension.suspension"
+    },
+    "steering_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::steering-type.steering-type"
+    },
+    "charging_time": {
+      "type": "string"
+    },
+    "boot_space": {
+      "type": "string"
+    },
+    "top_speed": {
+      "type": "string"
+    },
+    "battery_capacity": {
+      "type": "string"
+    },
+    "range": {
+      "type": "string"
+    },
+    "motor_power": {
+      "type": "string"
+    },
+    "turning_radius": {
+      "type": "string"
+    },
+    "emission_norm_compliance": {
+      "type": "string"
+    },
+    "charging_time_ac": {
+      "type": "string"
+    },
+    "charging_time_dc": {
+      "type": "string"
+    },
+    "battery_warranty": {
+      "type": "string"
+    },
+    "motor_warranty": {
+      "type": "string"
+    },
+    "vehicle_warranty": {
+      "type": "string"
+    },
+    "stardard_waranty": {
+      "type": "string"
+    },
+    "valve_per_cylinder": {
+      "type": "string"
+    },
+    "reserved_fuel_capacity": {
+      "type": "string"
+    },
+    "riding_modes": {
+      "type": "string"
+    },
+    "clutch": {
+      "type": "string"
+    },
+    "bore": {
+      "type": "string"
+    },
+    "stroke": {
+      "type": "string"
+    },
+    "starting": {
+      "type": "string"
+    },
+    "braking_system": {
+      "type": "string"
+    },
+    "service": {
+      "type": "component",
+      "repeatable": false,
+      "component": "variants.service"
+    },
+    "fuel_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::fuel-type.fuel-type"
+    }
+  }
+}

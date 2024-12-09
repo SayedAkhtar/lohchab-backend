@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "steering_types",
+  "info": {
+    "singularName": "steering-type",
+    "pluralName": "steering-types",
+    "displayName": "Steering Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

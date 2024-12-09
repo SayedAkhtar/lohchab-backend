@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "charging_options",
+  "info": {
+    "singularName": "charging-option",
+    "pluralName": "charging-options",
+    "displayName": "Charging Option"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

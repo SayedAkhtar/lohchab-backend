@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_car_safety_names",
+  "info": {
+    "displayName": "name",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "safeties": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::safety.safety"
+    }
+  }
+}

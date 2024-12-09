@@ -1,0 +1,41 @@
+{
+  "collectionName": "users",
+  "info": {
+    "name": "User",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "minLength": 3,
+      "unique": true
+    },
+    "email": {
+      "type": "email",
+      "minLength": 6,
+      "unique": true
+    },
+    "password": {
+      "type": "password"
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "users"
+    },
+    "birthdate": {
+      "type": "date"
+    },
+    "role": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.role",
+      "inversedBy": "users"
+    }
+  }
+}

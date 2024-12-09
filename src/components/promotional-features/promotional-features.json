@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_promotional_features_promotional_features",
+  "info": {
+    "displayName": "Promotional Features"
+  },
+  "options": {},
+  "attributes": {
+    "items": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

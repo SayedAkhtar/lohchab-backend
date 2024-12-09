@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "charging_types",
+  "info": {
+    "singularName": "charging-type",
+    "pluralName": "charging-types",
+    "displayName": "Charging Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

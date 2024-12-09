@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "safeties",
+  "info": {
+    "singularName": "safety",
+    "pluralName": "safeties",
+    "displayName": "Safety",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

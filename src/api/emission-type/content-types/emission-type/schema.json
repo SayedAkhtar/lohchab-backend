@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emission_types",
+  "info": {
+    "singularName": "emission-type",
+    "pluralName": "emission-types",
+    "displayName": "Emission Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

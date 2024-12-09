@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "body_types",
+  "info": {
+    "singularName": "body-type",
+    "pluralName": "body-types",
+    "displayName": "Body Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

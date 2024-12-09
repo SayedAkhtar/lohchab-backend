@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chassis_types",
+  "info": {
+    "singularName": "chassis-type",
+    "pluralName": "chassis-types",
+    "displayName": "Chassis Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

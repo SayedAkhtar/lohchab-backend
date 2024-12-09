@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "interiors",
+  "info": {
+    "singularName": "interior",
+    "pluralName": "interiors",
+    "displayName": "Interior"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

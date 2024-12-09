@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_variants_car_exteriors",
+  "info": {
+    "displayName": "Car Exterior"
+  },
+  "options": {},
+  "attributes": {
+    "exteriors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exterior.exterior"
+    }
+  }
+}

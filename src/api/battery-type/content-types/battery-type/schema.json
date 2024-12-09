@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "battery_types",
+  "info": {
+    "singularName": "battery-type",
+    "pluralName": "battery-types",
+    "displayName": "Battery Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

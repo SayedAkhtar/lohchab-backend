@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "charging_ports",
+  "info": {
+    "singularName": "charging-port",
+    "pluralName": "charging-ports",
+    "displayName": "Charging Port"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

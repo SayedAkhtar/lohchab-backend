@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "service_requests",
+  "info": {
+    "singularName": "service-request",
+    "pluralName": "service-requests",
+    "displayName": "Service Request"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "brand": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::brand.brand"
+    },
+    "vehicle_type": {
+      "type": "string",
+      "required": true
+    },
+    "showroom": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::showroom.showroom"
+    },
+    "model": {
+      "type": "string",
+      "required": true
+    },
+    "phone_number": {
+      "required": true,
+      "min": 10,
+      "type": "integer",
+      "max": 10
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "time": {
+      "type": "time",
+      "required": true
+    }
+  }
+}

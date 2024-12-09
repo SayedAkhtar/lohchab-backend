@@ -1,0 +1,88 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cars",
+  "info": {
+    "singularName": "car",
+    "pluralName": "cars",
+    "displayName": "Vehichle",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "overview": {
+      "type": "blocks",
+      "required": true
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": false
+    },
+    "brand": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::brand.brand",
+      "inversedBy": "cars"
+    },
+    "Variant": {
+      "displayName": "Car Variant",
+      "type": "component",
+      "repeatable": true,
+      "component": "variants.car-variant"
+    },
+    "colors": {
+      "displayName": "Colors Availabe",
+      "type": "component",
+      "repeatable": true,
+      "component": "colors.colors-availabe"
+    },
+    "dimension_capacity": {
+      "type": "component",
+      "repeatable": false,
+      "component": "dimension-weight.dimension-and-weight"
+    },
+    "vehicle_type": {
+      "type": "customField",
+      "options": [
+        "Car",
+        "SUV",
+        "Bike",
+        "Scooter",
+        "Commercial"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "total_queries": {
+      "type": "integer"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
