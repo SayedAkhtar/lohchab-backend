@@ -32,7 +32,8 @@ module.exports = {
         });
 
         // Sanitize user data
-        const sanitizedUser = await sanitize.contentAPI.output(user);
+        const schema = strapi.getModel("plugin::users-permissions.user");
+        const sanitizedUser = await sanitize.contentAPI.output(user, schema);
 
         return ctx.send({
             jwt: token,
