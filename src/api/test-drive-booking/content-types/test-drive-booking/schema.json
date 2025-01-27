@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "test_drive_bookings",
+  "info": {
+    "singularName": "test-drive-booking",
+    "pluralName": "test-drive-bookings",
+    "displayName": "Test Drive Booking"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "booked_at": {
+      "type": "datetime"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
+    }
+  }
+}

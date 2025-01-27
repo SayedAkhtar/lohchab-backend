@@ -775,7 +775,13 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::brand.brand'
     >;
-    mobile: Attribute.Integer & Attribute.Required & Attribute.Unique;
+    mobile: Attribute.String &
+      Attribute.Required &
+      Attribute.Unique &
+      Attribute.SetMinMaxLength<{
+        minLength: 10;
+        maxLength: 10;
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1042,6 +1048,48 @@ export interface ApiBodyTypeBodyType extends Schema.CollectionType {
   };
 }
 
+export interface ApiBookingBooking extends Schema.CollectionType {
+  collectionName: 'bookings';
+  info: {
+    singularName: 'booking';
+    pluralName: 'bookings';
+    displayName: 'Booking';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    brand: Attribute.String;
+    variant_name: Attribute.String;
+    fuel_type: Attribute.String;
+    transmission: Attribute.String;
+    color: Attribute.String;
+    booked_at: Attribute.DateTime;
+    address: Attribute.Text;
+    payment_id: Attribute.Text;
+    customer: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBrakeTypeBrakeType extends Schema.CollectionType {
   collectionName: 'brake_types';
   info: {
@@ -1086,7 +1134,8 @@ export interface ApiBrandBrand extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     cars: Attribute.Relation<'api::brand.brand', 'oneToMany', 'api::car.car'>;
-    promotional_banner: Attribute.Component<'promotional-banner.promotional-banner'>;
+    promotional_banner: Attribute.Component<'promotional-banner.promotional-banner'> &
+      Attribute.Required;
     is_parent: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
@@ -1101,6 +1150,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       'api::brand.brand'
     >;
     available_sections: Attribute.JSON &
+      Attribute.Required &
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
         ['Range', 'Newly Added', 'Top Selling']
@@ -1141,7 +1191,7 @@ export interface ApiCarCar extends Schema.CollectionType {
     overview: Attribute.Blocks & Attribute.Required;
     gallery: Attribute.Media<'images' | 'videos', true> & Attribute.Required;
     active: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
-    slug: Attribute.UID<'api::car.car', 'name'>;
+    slug: Attribute.UID<'api::car.car', 'name'> & Attribute.Required;
     brand: Attribute.Relation<'api::car.car', 'manyToOne', 'api::brand.brand'>;
     Variant: Attribute.Component<'variants.car-variant', true>;
     colors: Attribute.Component<'colors.colors-availabe', true>;
@@ -1152,7 +1202,7 @@ export interface ApiCarCar extends Schema.CollectionType {
         ['Car', 'SUV', 'Bike', 'Scooter', 'Commercial']
       >;
     total_queries: Attribute.Integer;
-    thumbnail: Attribute.Media<'images'> & Attribute.Required;
+    thumbnail: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1874,6 +1924,43 @@ export interface ApiSuspensionSuspension extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestDriveBookingTestDriveBooking
+  extends Schema.CollectionType {
+  collectionName: 'test_drive_bookings';
+  info: {
+    singularName: 'test-drive-booking';
+    pluralName: 'test-drive-bookings';
+    displayName: 'Test Drive Booking';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Attribute.Text;
+    booked_at: Attribute.DateTime;
+    user: Attribute.Relation<
+      'api::test-drive-booking.test-drive-booking',
+      'oneToOne',
+      'admin::user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::test-drive-booking.test-drive-booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::test-drive-booking.test-drive-booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiTransmissionTypeTransmissionType
   extends Schema.CollectionType {
   collectionName: 'transmission_types';
@@ -2037,6 +2124,7 @@ declare module '@strapi/types' {
       'plugin::menus.menu-item': PluginMenusMenuItem;
       'api::battery-type.battery-type': ApiBatteryTypeBatteryType;
       'api::body-type.body-type': ApiBodyTypeBodyType;
+      'api::booking.booking': ApiBookingBooking;
       'api::brake-type.brake-type': ApiBrakeTypeBrakeType;
       'api::brand.brand': ApiBrandBrand;
       'api::car.car': ApiCarCar;
@@ -2062,6 +2150,7 @@ declare module '@strapi/types' {
       'api::site-setting.site-setting': ApiSiteSettingSiteSetting;
       'api::steering-type.steering-type': ApiSteeringTypeSteeringType;
       'api::suspension.suspension': ApiSuspensionSuspension;
+      'api::test-drive-booking.test-drive-booking': ApiTestDriveBookingTestDriveBooking;
       'api::transmission-type.transmission-type': ApiTransmissionTypeTransmissionType;
       'api::tyre-type.tyre-type': ApiTyreTypeTyreType;
       'api::user-testimonial.user-testimonial': ApiUserTestimonialUserTestimonial;

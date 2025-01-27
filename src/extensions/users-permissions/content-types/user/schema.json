@@ -71,9 +71,12 @@
       "target": "api::brand.brand"
     },
     "mobile": {
-      "type": "integer",
-      "required": true,
-      "unique": true
+      "type": "string",
+      "regex": "[0-9]{10}",
+      "unique": true,
+      "minLength": 10,
+      "maxLength": 10,
+      "required": true
     }
   }
 }

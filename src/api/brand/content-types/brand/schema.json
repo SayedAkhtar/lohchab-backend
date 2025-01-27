@@ -26,7 +26,8 @@
       "displayName": "Promotional Banner",
       "type": "component",
       "repeatable": false,
-      "component": "promotional-banner.promotional-banner"
+      "component": "promotional-banner.promotional-banner",
+      "required": true
     },
     "is_parent": {
       "type": "boolean",
@@ -52,18 +53,19 @@
         "Newly Added",
         "Top Selling"
       ],
-      "customField": "plugin::multi-select.multi-select"
+      "customField": "plugin::multi-select.multi-select",
+      "required": true
     },
     "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     }
   }
 }

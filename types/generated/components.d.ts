@@ -315,10 +315,12 @@ export interface ColorsColorsAvailabe extends Schema.Component {
   collectionName: 'components_colors_colors_availabes';
   info: {
     displayName: 'Colors Availabe';
+    description: '';
   };
   attributes: {
     Color: Attribute.String &
       Attribute.CustomField<'plugin::color-picker.color'>;
+    thumbnail: Attribute.Media<'images'>;
   };
 }
 
