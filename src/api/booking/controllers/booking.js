@@ -24,10 +24,11 @@ module.exports = createCoreController('api::booking.booking', ({ strapi }) => ({
                 populate: ['customer', 'service'], // Populate required relations if needed
             });
 
-            return ctx.send(userBookings);
+            return ctx.send({ data: userBookings });
         } catch (error) {
             strapi.log.error("Error fetching user bookings:", error);
             return ctx.internalServerError("Something went wrong.");
         }
     },
 }));
+
