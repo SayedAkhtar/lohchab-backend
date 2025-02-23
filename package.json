@@ -10,7 +10,6 @@
     "strapi": "strapi",
     "deploy": "strapi deploy"
   },
-  "devDependencies": {},
   "dependencies": {
     "@strapi/plugin-cloud": "4.25.9",
     "@strapi/plugin-color-picker": "^4.25.9",
@@ -27,6 +26,7 @@
     "strapi-plugin-fcm": "^1.1.0",
     "strapi-plugin-menus": "^1.6.1",
     "strapi-plugin-multi-select": "^1.2.3",
+    "strapi-provider-upload-do": "^3.6.9",
     "styled-components": "5.3.3"
   },
   "author": {
