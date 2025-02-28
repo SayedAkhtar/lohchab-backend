@@ -1,7 +1,6 @@
 module.exports = [
   'strapi::logger',
   'strapi::errors',
-
   'strapi::cors',
   'strapi::poweredBy',
   'strapi::query',
@@ -22,8 +21,17 @@ module.exports = [
             "https://lohchab-static.blr1.digitaloceanspaces.com",
             "https://market-assets.strapi.io",
           ],
+          "media-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "https://lohchab-static.blr1.digitaloceanspaces.com",
+          ],
+          "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+          "style-src": ["'self'", "'unsafe-inline'"],
+          "font-src": ["'self'", "data:"],
         },
       },
     },
-  }
+  },
 ];
