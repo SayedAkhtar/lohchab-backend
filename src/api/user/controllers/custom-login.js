@@ -3,9 +3,9 @@ const crypto = require("crypto");
 
 module.exports = {
     async login(ctx) {
-        const { mobile, password } = ctx.request.body;
+        const { mobile } = ctx.request.body;
 
-        if (!mobile || !password) {
+        if (!mobile) {
             return ctx.badRequest("Mobile number and password are required.");
         }
 
@@ -18,14 +18,14 @@ module.exports = {
             return ctx.badRequest("Invalid mobile number or password.");
         }
 
-        // Verify the password
-        const isValidPassword = await strapi
-            .service("plugin::users-permissions.user")
-            .validatePassword(password, user.password);
+        // // Verify the password
+        // const isValidPassword = await strapi
+        //     .service("plugin::users-permissions.user")
+        //     .validatePassword(password, user.password);
 
-        if (!isValidPassword) {
-            return ctx.badRequest("Invalid mobile number or password.");
-        }
+        // if (!isValidPassword) {
+        //     return ctx.badRequest("Invalid mobile number or password.");
+        // }
 
         // Generate JWT token
         const token = strapi.plugins["users-permissions"].services.jwt.issue({
