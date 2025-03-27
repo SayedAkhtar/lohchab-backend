@@ -48,11 +48,16 @@ module.exports = {
         if (!mobile) {
             return ctx.badRequest("Mobile number is required.");
         }
-
+        let user = null
+        try {
+            user = await strapi.db.query("plugin::users-permissions.user").findOne({
+                where: { mobile },
+            });
+        } catch (error) {
+            console.log(error);
+        }
         // Find the user by mobile number
-        const user = await strapi.db.query("plugin::users-permissions.user").findOne({
-            where: { mobile },
-        });
+
 
         if (!user) {
             return ctx.badRequest("User with this mobile number does not exist.");
