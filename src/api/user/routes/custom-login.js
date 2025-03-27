@@ -7,14 +7,6 @@ module.exports = {
             config: {
                 auth: false, // No authentication required to access this route
             },
-        },
-        {
-            method: "POST",
-            path: "/auth/request-otp",
-            handler: "custom-login.requestOtp",
-            config: {
-                auth: false, // No authentication required to access this route
-            },
         }
     ],
 };
