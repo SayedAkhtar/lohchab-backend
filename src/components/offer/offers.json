@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_offer_offers",
+  "info": {
+    "displayName": "offers",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "offer_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "link": {
+      "type": "text"
+    }
+  }
+}

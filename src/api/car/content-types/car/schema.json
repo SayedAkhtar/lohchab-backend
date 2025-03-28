@@ -73,9 +73,6 @@
       ],
       "customField": "plugin::multi-select.multi-select"
     },
-    "total_queries": {
-      "type": "integer"
-    },
     "thumbnail": {
       "type": "media",
       "multiple": false,
@@ -83,6 +80,10 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "top_selling": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

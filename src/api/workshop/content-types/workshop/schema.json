@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "workshops",
+  "info": {
+    "singularName": "workshop",
+    "pluralName": "workshops",
+    "displayName": "workshop",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "open_time": {
+      "type": "time"
+    },
+    "close_time": {
+      "type": "time"
+    },
+    "days_open": {
+      "type": "customField",
+      "options": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thr",
+        "Fri",
+        "Sat",
+        "Sun"
+      ],
+      "customField": "plugin::multi-select.multi-select"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::brand.brand"
+    }
+  }
+}

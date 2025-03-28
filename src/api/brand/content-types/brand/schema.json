@@ -66,6 +66,19 @@
         "videos",
         "audios"
       ]
+    },
+    "types_available": {
+      "type": "customField",
+      "options": [
+        "Car",
+        "Scooter",
+        "Pick Up",
+        "SUV",
+        "e-SUV",
+        "Bike",
+        "LLM"
+      ],
+      "customField": "plugin::multi-select.multi-select"
     }
   }
 }

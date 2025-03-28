@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_instagram_links_instagram_links",
+  "info": {
+    "displayName": "instagram_links"
+  },
+  "options": {},
+  "attributes": {
+    "iframe": {
+      "type": "text"
+    }
+  }
+}

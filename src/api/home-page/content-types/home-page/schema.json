@@ -39,11 +39,17 @@
       ]
     },
     "selfie_at_lohchab": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "instagram_links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "instagram-links.instagram-links"
     }
   }
 }

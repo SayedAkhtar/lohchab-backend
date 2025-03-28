@@ -1157,6 +1157,11 @@ export interface ApiBrandBrand extends Schema.CollectionType {
       >;
     thumbnail: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.Required;
+    types_available: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Car', 'Scooter', 'Pick Up', 'SUV', 'e-SUV', 'Bike', 'LLM']
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1201,8 +1206,8 @@ export interface ApiCarCar extends Schema.CollectionType {
         'plugin::multi-select.multi-select',
         ['Car', 'SUV', 'Bike', 'Scooter', 'Commercial']
       >;
-    total_queries: Attribute.Integer;
     thumbnail: Attribute.Media<'images'>;
+    top_selling: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1568,6 +1573,10 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     >;
     gallery: Attribute.Media<'images' | 'videos', true>;
     selfie_at_lohchab: Attribute.Media<'images', true>;
+    instagram_links: Attribute.Component<
+      'instagram-links.instagram-links',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1648,6 +1657,44 @@ export interface ApiInteriorInterior extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::interior.interior',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLoanEligibilityLoanEligibility
+  extends Schema.CollectionType {
+  collectionName: 'loan_eligibilities';
+  info: {
+    singularName: 'loan-eligibility';
+    pluralName: 'loan-eligibilities';
+    displayName: 'loan eligibility';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    phone_number: Attribute.String & Attribute.Required;
+    files: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true> &
+      Attribute.Required;
+    down_payment: Attribute.String & Attribute.Required;
+    loan_tenure: Attribute.Integer & Attribute.Required;
+    rate_of_intrest: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::loan-eligibility.loan-eligibility',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::loan-eligibility.loan-eligibility',
       'oneToOne',
       'admin::user'
     > &
@@ -1846,6 +1893,16 @@ export interface ApiSiteSettingSiteSetting extends Schema.SingleType {
   };
   attributes: {
     rate_of_intrest: Attribute.Float;
+    insurance_brands: Attribute.Relation<
+      'api::site-setting.site-setting',
+      'oneToMany',
+      'api::brand.brand'
+    >;
+    servicing_brands: Attribute.Relation<
+      'api::site-setting.site-setting',
+      'oneToMany',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2100,6 +2157,50 @@ export interface ApiWheelTypeWheelType extends Schema.CollectionType {
   };
 }
 
+export interface ApiWorkshopWorkshop extends Schema.CollectionType {
+  collectionName: 'workshops';
+  info: {
+    singularName: 'workshop';
+    pluralName: 'workshops';
+    displayName: 'workshop';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    address: Attribute.Text;
+    open_time: Attribute.Time;
+    close_time: Attribute.Time;
+    days_open: Attribute.JSON &
+      Attribute.CustomField<
+        'plugin::multi-select.multi-select',
+        ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun']
+      >;
+    brands: Attribute.Relation<
+      'api::workshop.workshop',
+      'oneToMany',
+      'api::brand.brand'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::workshop.workshop',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::workshop.workshop',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -2142,6 +2243,7 @@ declare module '@strapi/types' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::insurance.insurance': ApiInsuranceInsurance;
       'api::interior.interior': ApiInteriorInterior;
+      'api::loan-eligibility.loan-eligibility': ApiLoanEligibilityLoanEligibility;
       'api::motor-type.motor-type': ApiMotorTypeMotorType;
       'api::regeneration-braking-level.regeneration-braking-level': ApiRegenerationBrakingLevelRegenerationBrakingLevel;
       'api::safety.safety': ApiSafetySafety;
@@ -2155,6 +2257,7 @@ declare module '@strapi/types' {
       'api::tyre-type.tyre-type': ApiTyreTypeTyreType;
       'api::user-testimonial.user-testimonial': ApiUserTestimonialUserTestimonial;
       'api::wheel-type.wheel-type': ApiWheelTypeWheelType;
+      'api::workshop.workshop': ApiWorkshopWorkshop;
     }
   }
 }

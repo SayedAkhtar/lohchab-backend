@@ -238,6 +238,34 @@ export interface PromotionalBannerPromotionalBanner extends Schema.Component {
       'images' | 'files' | 'videos' | 'audios'
     > &
       Attribute.Required;
+    text_color: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    button_text: Attribute.String;
+    button_link: Attribute.Text;
+    button_color: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+  };
+}
+
+export interface OfferOffers extends Schema.Component {
+  collectionName: 'components_offer_offers';
+  info: {
+    displayName: 'offers';
+    description: '';
+  };
+  attributes: {
+    offer_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Attribute.Text;
+  };
+}
+
+export interface InstagramLinksInstagramLinks extends Schema.Component {
+  collectionName: 'components_instagram_links_instagram_links';
+  info: {
+    displayName: 'instagram_links';
+  };
+  attributes: {
+    iframe: Attribute.Text;
   };
 }
 
@@ -349,6 +377,8 @@ declare module '@strapi/types' {
       'variants.car-exterior': VariantsCarExterior;
       'promotional-features.promotional-features': PromotionalFeaturesPromotionalFeatures;
       'promotional-banner.promotional-banner': PromotionalBannerPromotionalBanner;
+      'offer.offers': OfferOffers;
+      'instagram-links.instagram-links': InstagramLinksInstagramLinks;
       'home-slider.home-slider': HomeSliderHomeSlider;
       'features.feature-available': FeaturesFeatureAvailable;
       'faq.faq': FaqFaq;

@@ -20,6 +20,22 @@
         "videos",
         "audios"
       ]
+    },
+    "text_color": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "button_text": {
+      "type": "string"
+    },
+    "button_link": {
+      "type": "text"
+    },
+    "button_color": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
     }
   }
 }

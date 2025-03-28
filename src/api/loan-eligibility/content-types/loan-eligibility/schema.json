@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "loan_eligibilities",
+  "info": {
+    "singularName": "loan-eligibility",
+    "pluralName": "loan-eligibilities",
+    "displayName": "loan eligibility",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone_number": {
+      "type": "string",
+      "required": true,
+      "regex": "[0-9]{10}"
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "down_payment": {
+      "type": "string",
+      "required": true
+    },
+    "loan_tenure": {
+      "type": "integer",
+      "required": true
+    },
+    "rate_of_intrest": {
+      "type": "string"
+    }
+  }
+}
