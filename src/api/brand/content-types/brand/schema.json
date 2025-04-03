@@ -25,7 +25,7 @@
     "promotional_banner": {
       "displayName": "Promotional Banner",
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "promotional-banner.promotional-banner",
       "required": true
     },
@@ -79,6 +79,11 @@
         "LLM"
       ],
       "customField": "plugin::multi-select.multi-select"
+    },
+    "offers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "offer.offers"
     }
   }
 }

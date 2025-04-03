@@ -1134,7 +1134,10 @@ export interface ApiBrandBrand extends Schema.CollectionType {
   attributes: {
     name: Attribute.String & Attribute.Required;
     cars: Attribute.Relation<'api::brand.brand', 'oneToMany', 'api::car.car'>;
-    promotional_banner: Attribute.Component<'promotional-banner.promotional-banner'> &
+    promotional_banner: Attribute.Component<
+      'promotional-banner.promotional-banner',
+      true
+    > &
       Attribute.Required;
     is_parent: Attribute.Boolean &
       Attribute.Required &
@@ -1162,6 +1165,7 @@ export interface ApiBrandBrand extends Schema.CollectionType {
         'plugin::multi-select.multi-select',
         ['Car', 'Scooter', 'Pick Up', 'SUV', 'e-SUV', 'Bike', 'LLM']
       >;
+    offers: Attribute.Component<'offer.offers', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

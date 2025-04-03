@@ -269,6 +269,28 @@ export interface InstagramLinksInstagramLinks extends Schema.Component {
   };
 }
 
+export interface OfferOffers extends Schema.Component {
+  collectionName: 'components_offer_offers';
+  info: {
+    displayName: 'offers';
+    description: '';
+  };
+  attributes: {
+    offer_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Attribute.Text;
+  };
+}
+
+export interface InstagramLinksInstagramLinks extends Schema.Component {
+  collectionName: 'components_instagram_links_instagram_links';
+  info: {
+    displayName: 'instagram_links';
+  };
+  attributes: {
+    iframe: Attribute.Text;
+  };
+}
+
 export interface HomeSliderHomeSlider extends Schema.Component {
   collectionName: 'components_home_slider_home_sliders';
   info: {
