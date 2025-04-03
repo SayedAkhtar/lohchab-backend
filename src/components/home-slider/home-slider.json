@@ -1,7 +1,8 @@
 {
   "collectionName": "components_home_slider_home_sliders",
   "info": {
-    "displayName": "Home Slider"
+    "displayName": "Home Slider",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,21 +12,31 @@
       "minLength": 2
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
+      ]
     },
     "button_one_link": {
       "type": "string"
     },
     "button_two_link": {
       "type": "string"
+    },
+    "button_one_color": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "heading_color": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
     }
   }
 }

@@ -782,6 +782,9 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
         minLength: 10;
         maxLength: 10;
       }>;
+    otp: Attribute.Integer;
+    selfies: Attribute.Media<'images', true>;
+    thumbnail: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1054,24 +1057,28 @@ export interface ApiBookingBooking extends Schema.CollectionType {
     singularName: 'booking';
     pluralName: 'bookings';
     displayName: 'Booking';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    brand: Attribute.String;
-    variant_name: Attribute.String;
-    fuel_type: Attribute.String;
-    transmission: Attribute.String;
-    color: Attribute.String;
-    booked_at: Attribute.DateTime;
-    address: Attribute.Text;
+    brand: Attribute.String & Attribute.Required;
+    variant_name: Attribute.String & Attribute.Required;
+    fuel_type: Attribute.String & Attribute.Required;
+    transmission: Attribute.String & Attribute.Required;
+    color: Attribute.String & Attribute.Required;
+    booked_at: Attribute.DateTime & Attribute.Required;
+    address: Attribute.Text & Attribute.Required;
     payment_id: Attribute.Text;
     customer: Attribute.Relation<
       'api::booking.booking',
       'oneToOne',
-      'admin::user'
+      'plugin::users-permissions.user'
     >;
+    booking_type: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'buy'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1163,8 +1170,18 @@ export interface ApiBrandBrand extends Schema.CollectionType {
     types_available: Attribute.JSON &
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
-        ['Car', 'Scooter', 'Pick Up', 'SUV', 'e-SUV', 'Bike', 'LLM']
+        [
+          'Car',
+          'SUV',
+          'Bike',
+          'Scooter',
+          'Commercial',
+          '3 Wheelers',
+          '4 Wheelers',
+          'eSUV'
+        ]
       >;
+    gallery: Attribute.Media<'images', true>;
     offers: Attribute.Component<'offer.offers', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1208,9 +1225,10 @@ export interface ApiCarCar extends Schema.CollectionType {
     vehicle_type: Attribute.JSON &
       Attribute.CustomField<
         'plugin::multi-select.multi-select',
-        ['Car', 'SUV', 'Bike', 'Scooter', 'Commercial']
+        ['Car', 'SUV', 'Bike', 'Scooter', 'Commercial', 'Last Mile Mobility']
       >;
     thumbnail: Attribute.Media<'images'>;
+    vehicle_pics: Attribute.Media<'images', true>;
     top_selling: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1581,6 +1599,7 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
       'instagram-links.instagram-links',
       true
     >;
+    offers: Attribute.Component<'offer.offers', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1618,8 +1637,8 @@ export interface ApiInsuranceInsurance extends Schema.CollectionType {
     >;
     vehicle_type: Attribute.String & Attribute.Required;
     registration_number: Attribute.String & Attribute.Required;
-    phone_number: Attribute.Integer;
     documents: Attribute.Media<'files' | 'images', true> & Attribute.Required;
+    phone_number: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1803,6 +1822,7 @@ export interface ApiServiceRequestServiceRequest extends Schema.CollectionType {
     singularName: 'service-request';
     pluralName: 'service-requests';
     displayName: 'Service Request';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1814,21 +1834,13 @@ export interface ApiServiceRequestServiceRequest extends Schema.CollectionType {
       'api::brand.brand'
     >;
     vehicle_type: Attribute.String & Attribute.Required;
-    showroom: Attribute.Relation<
+    workshop: Attribute.Relation<
       'api::service-request.service-request',
       'oneToOne',
-      'api::showroom.showroom'
+      'api::workshop.workshop'
     >;
     model: Attribute.String & Attribute.Required;
-    phone_number: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 10;
-          max: 10;
-        },
-        number
-      >;
+    phone_number: Attribute.BigInteger & Attribute.Required;
     date: Attribute.Date & Attribute.Required;
     time: Attribute.Time & Attribute.Required;
     createdAt: Attribute.DateTime;
@@ -1866,6 +1878,11 @@ export interface ApiShowroomShowroom extends Schema.CollectionType {
     map_link: Attribute.Text;
     open_time: Attribute.Time;
     close_time: Attribute.Time;
+    brands: Attribute.Relation<
+      'api::showroom.showroom',
+      'oneToMany',
+      'api::brand.brand'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1897,6 +1914,7 @@ export interface ApiSiteSettingSiteSetting extends Schema.SingleType {
   };
   attributes: {
     rate_of_intrest: Attribute.Float;
+    booking_amount: Attribute.BigInteger;
     insurance_brands: Attribute.Relation<
       'api::site-setting.site-setting',
       'oneToMany',
@@ -1907,6 +1925,7 @@ export interface ApiSiteSettingSiteSetting extends Schema.SingleType {
       'oneToMany',
       'api::brand.brand'
     >;
+    offers: Attribute.Component<'offer.offers', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1992,6 +2011,7 @@ export interface ApiTestDriveBookingTestDriveBooking
     singularName: 'test-drive-booking';
     pluralName: 'test-drive-bookings';
     displayName: 'Test Drive Booking';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1999,11 +2019,13 @@ export interface ApiTestDriveBookingTestDriveBooking
   attributes: {
     address: Attribute.Text;
     booked_at: Attribute.DateTime;
-    user: Attribute.Relation<
+    customer: Attribute.Relation<
       'api::test-drive-booking.test-drive-booking',
       'oneToOne',
-      'admin::user'
+      'plugin::users-permissions.user'
     >;
+    vehicle_name: Attribute.String;
+    variant: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2098,6 +2120,7 @@ export interface ApiUserTestimonialUserTestimonial
     singularName: 'user-testimonial';
     pluralName: 'user-testimonials';
     displayName: 'User Testimonial';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -2108,11 +2131,12 @@ export interface ApiUserTestimonialUserTestimonial
       Attribute.SetMinMaxLength<{
         minLength: 128;
       }>;
-    admin_user: Attribute.Relation<
+    customer: Attribute.Relation<
       'api::user-testimonial.user-testimonial',
       'oneToOne',
-      'admin::user'
+      'plugin::users-permissions.user'
     >;
+    title: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

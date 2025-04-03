@@ -69,13 +69,22 @@
         "SUV",
         "Bike",
         "Scooter",
-        "Commercial"
+        "Commercial",
+        "Last Mile Mobility"
       ],
       "customField": "plugin::multi-select.multi-select"
     },
     "thumbnail": {
       "type": "media",
       "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "vehicle_pics": {
+      "type": "media",
+      "multiple": true,
       "required": false,
       "allowedTypes": [
         "images"

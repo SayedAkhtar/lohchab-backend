@@ -4,7 +4,8 @@
   "info": {
     "singularName": "test-drive-booking",
     "pluralName": "test-drive-bookings",
-    "displayName": "Test Drive Booking"
+    "displayName": "Test Drive Booking",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,10 +18,16 @@
     "booked_at": {
       "type": "datetime"
     },
-    "user": {
+    "customer": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user"
+    },
+    "vehicle_name": {
+      "type": "string"
+    },
+    "variant": {
+      "type": "string"
     }
   }
 }

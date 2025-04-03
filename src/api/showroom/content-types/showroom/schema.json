@@ -26,6 +26,11 @@
     },
     "close_time": {
       "type": "time"
+    },
+    "brands": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::brand.brand"
     }
   }
 }

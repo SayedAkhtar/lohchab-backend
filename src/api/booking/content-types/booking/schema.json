@@ -4,7 +4,8 @@
   "info": {
     "singularName": "booking",
     "pluralName": "bookings",
-    "displayName": "Booking"
+    "displayName": "Booking",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,25 +13,32 @@
   "pluginOptions": {},
   "attributes": {
     "brand": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "variant_name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "fuel_type": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "transmission": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "color": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "booked_at": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "address": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "payment_id": {
       "type": "text"
@@ -38,7 +46,12 @@
     "customer": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user"
+    },
+    "booking_type": {
+      "type": "string",
+      "default": "buy",
+      "required": true
     }
   }
 }

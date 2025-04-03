@@ -26,16 +26,17 @@
       "unique": false,
       "required": true
     },
-    "phone_number": {
-      "type": "integer"
-    },
     "documents": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
       "allowedTypes": [
         "files",
         "images"
-      ],
-      "type": "media",
-      "multiple": true,
+      ]
+    },
+    "phone_number": {
+      "type": "string",
       "required": true
     }
   }

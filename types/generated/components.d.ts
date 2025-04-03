@@ -226,6 +226,18 @@ export interface PromotionalFeaturesPromotionalFeatures
   };
 }
 
+export interface OfferOffers extends Schema.Component {
+  collectionName: 'components_offer_offers';
+  info: {
+    displayName: 'offers';
+    description: '';
+  };
+  attributes: {
+    offer_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    link: Attribute.Text;
+  };
+}
+
 export interface PromotionalBannerPromotionalBanner extends Schema.Component {
   collectionName: 'components_promotional_banner_promotions';
   info: {
@@ -240,44 +252,9 @@ export interface PromotionalBannerPromotionalBanner extends Schema.Component {
       Attribute.Required;
     text_color: Attribute.String &
       Attribute.CustomField<'plugin::color-picker.color'>;
-    button_text: Attribute.String;
-    button_link: Attribute.Text;
     button_color: Attribute.String &
       Attribute.CustomField<'plugin::color-picker.color'>;
-  };
-}
-
-export interface OfferOffers extends Schema.Component {
-  collectionName: 'components_offer_offers';
-  info: {
-    displayName: 'offers';
-    description: '';
-  };
-  attributes: {
-    offer_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    link: Attribute.Text;
-  };
-}
-
-export interface InstagramLinksInstagramLinks extends Schema.Component {
-  collectionName: 'components_instagram_links_instagram_links';
-  info: {
-    displayName: 'instagram_links';
-  };
-  attributes: {
-    iframe: Attribute.Text;
-  };
-}
-
-export interface OfferOffers extends Schema.Component {
-  collectionName: 'components_offer_offers';
-  info: {
-    displayName: 'offers';
-    description: '';
-  };
-  attributes: {
-    offer_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    link: Attribute.Text;
+    button_text: Attribute.String;
   };
 }
 
@@ -295,6 +272,7 @@ export interface HomeSliderHomeSlider extends Schema.Component {
   collectionName: 'components_home_slider_home_sliders';
   info: {
     displayName: 'Home Slider';
+    description: '';
   };
   attributes: {
     heading: Attribute.String &
@@ -306,6 +284,10 @@ export interface HomeSliderHomeSlider extends Schema.Component {
       Attribute.Required;
     button_one_link: Attribute.String;
     button_two_link: Attribute.String;
+    button_one_color: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    heading_color: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
   };
 }
 
@@ -398,8 +380,8 @@ declare module '@strapi/types' {
       'variants.car-interior': VariantsCarInterior;
       'variants.car-exterior': VariantsCarExterior;
       'promotional-features.promotional-features': PromotionalFeaturesPromotionalFeatures;
-      'promotional-banner.promotional-banner': PromotionalBannerPromotionalBanner;
       'offer.offers': OfferOffers;
+      'promotional-banner.promotional-banner': PromotionalBannerPromotionalBanner;
       'instagram-links.instagram-links': InstagramLinksInstagramLinks;
       'home-slider.home-slider': HomeSliderHomeSlider;
       'features.feature-available': FeaturesFeatureAvailable;

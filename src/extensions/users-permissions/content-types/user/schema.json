@@ -77,6 +77,24 @@
       "minLength": 10,
       "maxLength": 10,
       "required": true
+    },
+    "otp": {
+      "type": "integer"
+    },
+    "selfies": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

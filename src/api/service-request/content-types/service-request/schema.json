@@ -4,7 +4,8 @@
   "info": {
     "singularName": "service-request",
     "pluralName": "service-requests",
-    "displayName": "Service Request"
+    "displayName": "Service Request",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,10 +21,10 @@
       "type": "string",
       "required": true
     },
-    "showroom": {
+    "workshop": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::showroom.showroom"
+      "target": "api::workshop.workshop"
     },
     "model": {
       "type": "string",
@@ -31,9 +32,7 @@
     },
     "phone_number": {
       "required": true,
-      "min": 10,
-      "type": "integer",
-      "max": 10
+      "type": "biginteger"
     },
     "date": {
       "type": "date",

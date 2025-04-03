@@ -47,9 +47,15 @@
       ]
     },
     "instagram_links": {
+      "displayName": "instagram_links",
       "type": "component",
       "repeatable": true,
       "component": "instagram-links.instagram-links"
+    },
+    "offers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "offer.offers"
     }
   }
 }

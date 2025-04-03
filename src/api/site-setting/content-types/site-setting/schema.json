@@ -15,6 +15,9 @@
     "rate_of_intrest": {
       "type": "float"
     },
+    "booking_amount": {
+      "type": "biginteger"
+    },
     "insurance_brands": {
       "type": "relation",
       "relation": "oneToMany",
@@ -24,6 +27,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::brand.brand"
+    },
+    "offers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "offer.offers"
     }
   }
 }

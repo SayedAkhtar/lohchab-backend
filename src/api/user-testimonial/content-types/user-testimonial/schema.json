@@ -4,7 +4,8 @@
   "info": {
     "singularName": "user-testimonial",
     "pluralName": "user-testimonials",
-    "displayName": "User Testimonial"
+    "displayName": "User Testimonial",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,10 +17,14 @@
       "required": true,
       "minLength": 128
     },
-    "admin_user": {
+    "customer": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user"
+    },
+    "title": {
+      "type": "string",
+      "required": true
     }
   }
 }
