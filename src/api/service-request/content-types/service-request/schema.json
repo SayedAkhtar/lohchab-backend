@@ -21,11 +21,6 @@
       "type": "string",
       "required": true
     },
-    "workshop": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::workshop.workshop"
-    },
     "model": {
       "type": "string",
       "required": true
@@ -41,6 +36,11 @@
     "time": {
       "type": "time",
       "required": true
+    },
+    "center": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::workshop.workshop"
     }
   }
 }

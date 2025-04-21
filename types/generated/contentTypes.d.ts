@@ -1834,15 +1834,15 @@ export interface ApiServiceRequestServiceRequest extends Schema.CollectionType {
       'api::brand.brand'
     >;
     vehicle_type: Attribute.String & Attribute.Required;
-    workshop: Attribute.Relation<
-      'api::service-request.service-request',
-      'oneToOne',
-      'api::workshop.workshop'
-    >;
     model: Attribute.String & Attribute.Required;
     phone_number: Attribute.BigInteger & Attribute.Required;
     date: Attribute.Date & Attribute.Required;
     time: Attribute.Time & Attribute.Required;
+    center: Attribute.Relation<
+      'api::service-request.service-request',
+      'oneToOne',
+      'api::workshop.workshop'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

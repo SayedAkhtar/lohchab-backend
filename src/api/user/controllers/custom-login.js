@@ -40,91 +40,75 @@ module.exports = {
             jwt: token,
             user: sanitizedUser,
         });
-    }
+    },
     // // Request OTP
-    // async requestOtp(ctx) {
-    //     const { mobile } = ctx.request.body;
+    async checkUser(ctx) {
+        const { mobile } = ctx.request.body;
 
-    //     if (!mobile) {
-    //         return ctx.badRequest("Mobile number is required.");
-    //     }
-    //     let user = null
-    //     try {
-    //         user = await strapi.db.query("plugin::users-permissions.user").findOne({
-    //             where: { mobile },
-    //         });
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    //     // Find the user by mobile number
+        if (!mobile) {
+            return ctx.badRequest("Mobile number is required.");
+        }
+        let user = null
+        try {
+            user = await strapi.db.query("plugin::users-permissions.user").findOne({
+                where: { mobile },
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        // Find the user by mobile number
 
 
-    //     if (!user) {
-    //         return ctx.badRequest("User with this mobile number does not exist.");
-    //     }
+        if (!user) {
+            return ctx.badRequest("User with this mobile number does not exist.");
+        }
 
-    //     // Generate OTP
-    //     const otp = crypto.randomInt(100000, 999999).toString();
-    //     const otpExpiry = new Date(Date.now() + 5 * 60 * 1000); // 5 minutes expiry
+        return ctx.send({ message: "User Exists.", data: {mobile:user.mobile, username: user.username} });
+    },
 
-    //     // Update user record with OTP and expiry
-    //     await strapi.db.query("plugin::users-permissions.user").update({
-    //         where: { id: user.id },
-    //         data: {
-    //             otp,
-    //             otpExpiry,
-    //         },
-    //     });
+    // Login with OTP
+    async loginWithOtp(ctx) {
+        const { mobile, otp } = ctx.request.body;
 
-    //     // Send OTP via SMS (replace console.log with your SMS gateway integration)
-    //     console.log(`OTP for ${mobile}: ${otp}`);
+        if (!mobile || !otp) {
+            return ctx.badRequest("Mobile number and OTP are required.");
+        }
 
-    //     return ctx.send({ message: "OTP sent successfully." });
-    // },
+        // Find the user by mobile number
+        const user = await strapi.db.query("plugin::users-permissions.user").findOne({
+            where: { mobile },
+        });
 
-    // // Login with OTP
-    // async loginWithOtp(ctx) {
-    //     const { mobile, otp } = ctx.request.body;
+        if (!user) {
+            return ctx.badRequest("User not found.");
+        }
 
-    //     if (!mobile || !otp) {
-    //         return ctx.badRequest("Mobile number and OTP are required.");
-    //     }
+        // Check if OTP matches and is still valid
+        if (user.otp !== otp || new Date() > new Date(user.otpExpiry)) {
+            return ctx.badRequest("Invalid or expired OTP.");
+        }
 
-    //     // Find the user by mobile number
-    //     const user = await strapi.db.query("plugin::users-permissions.user").findOne({
-    //         where: { mobile },
-    //     });
+        // Clear OTP fields after successful login
+        await strapi.db.query("plugin::users-permissions.user").update({
+            where: { id: user.id },
+            data: {
+                otp: null,
+                otpExpiry: null,
+            },
+        });
 
-    //     if (!user) {
-    //         return ctx.badRequest("User not found.");
-    //     }
+        // Generate JWT token
+        const token = strapi.plugins["users-permissions"].services.jwt.issue({
+            id: user.id,
+        });
 
-    //     // Check if OTP matches and is still valid
-    //     if (user.otp !== otp || new Date() > new Date(user.otpExpiry)) {
-    //         return ctx.badRequest("Invalid or expired OTP.");
-    //     }
+        // Sanitize user data
+        const schema = strapi.getModel("plugin::users-permissions.user");
+        const sanitizedUser = await sanitize.contentAPI.output(user, schema);
 
-    //     // Clear OTP fields after successful login
-    //     await strapi.db.query("plugin::users-permissions.user").update({
-    //         where: { id: user.id },
-    //         data: {
-    //             otp: null,
-    //             otpExpiry: null,
-    //         },
-    //     });
-
-    //     // Generate JWT token
-    //     const token = strapi.plugins["users-permissions"].services.jwt.issue({
-    //         id: user.id,
-    //     });
-
-    //     // Sanitize user data
-    //     const schema = strapi.getModel("plugin::users-permissions.user");
-    //     const sanitizedUser = await sanitize.contentAPI.output(user, schema);
-
-    //     return ctx.send({
-    //         jwt: token,
-    //         user: sanitizedUser,
-    //     });
-    // },
+        return ctx.send({
+            jwt: token,
+            user: sanitizedUser,
+        });
+    },
 };
